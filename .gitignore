@@ -1,5 +1,5 @@
 # Add this line to exclude db.php
-test.php
+db.php
 
 # Created by https://www.toptal.com/developers/gitignore/api/phpstorm+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=phpstorm+all

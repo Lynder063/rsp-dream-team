@@ -114,10 +114,7 @@
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $servername = "localhost";
-    $username = "your_username";
-    $password = "your_password";
-    $dbname = "your_database_name";
+    require_once('db.php');
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -138,10 +135,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Hash the password
-    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+    // Generate a random salt
+    $salt = bin2hex(random_bytes(32));
 
-    $sql = "INSERT INTO users (username, firstname, lastname, email, password) VALUES ('$username', '$firstname', '$lastname', '$email', '$hashed_password')";
+    // Combine the password and salt, and hash it using SHA-256
+    $hashed_password = hash('sha256', $password . $salt);
+
+    $sql = "INSERT INTO users (username, firstname, lastname, email, password, salt) VALUES ('$username', '$firstname', '$lastname', '$email', '$hashed_password', '$salt')";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: login.php");
@@ -151,4 +151,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $conn->close();
 }
+
 ?>
