@@ -96,5 +96,4 @@
 </div>
 </body>
 </html>
-<?php
-?>
+
