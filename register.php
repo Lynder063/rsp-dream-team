@@ -87,21 +87,23 @@
 
 <div class="form">
     <form action="proces.php" method="post" class="xd">
+        <label for="username">Uživatelské jméno</label>
+        <input type="text" id="username" name="username" required><br>
 
-        <label for="name">Jméno</label>
-        <input type="text" id="name" name="name" required><br>
+        <label for="firstname">Jméno</label>
+        <input type="text" id="firstname" name="firstname" required><br>
 
-        <label for="surname">Příjmení</label>
-        <input type="text" id="surname" name="surname" required><br>
+        <label for="lastname">Příjmení</label>
+        <input type="text" id="lastname" name="lastname" required><br>
 
         <label for="email">E-mail</label>
         <input type="text" id="email" name="email" required><br>
 
-        <label for="username">Uživatelské jméno</label>
-        <input type="text" id="username" name="username" required><br>
-
         <label for="password">Heslo</label>
         <input type="password" id="password" name="password" required><br>
+
+        <label for="confirm_password">Potvrďte heslo</label>
+        <input type="password" id="confirm_password" name="confirm_password" required><br>
 
         <br><br>
         <input type="submit" value="Registrovat" class="button">
@@ -111,7 +113,42 @@
 </html>
 
 <?php
-?>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $servername = "localhost";
+    $username = "your_username";
+    $password = "your_password";
+    $dbname = "your_database_name";
 
-<?php
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $username = $_POST['username'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    // Check if passwords match
+    if ($password !== $confirm_password) {
+        header("Location: register.php?error=1");
+        exit;
+    }
+
+    // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
+    $sql = "INSERT INTO users (username, firstname, lastname, email, password) VALUES ('$username', '$firstname', '$lastname', '$email', '$hashed_password')";
+
+    if ($conn->query($sql) === TRUE) {
+        header("Location: login.php");
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    $conn->close();
+}
 ?>
