@@ -86,7 +86,7 @@
 <h1 class="Reg">Registrace</h1>
 
 <div class="form">
-    <form action="proces.php" method="post" class="xd">
+    <form method="post">
         <label for="username">Uživatelské jméno</label>
         <input type="text" id="username" name="username" required><br>
 
@@ -113,10 +113,20 @@
 </html>
 
 <?php
+require_once('db.php');
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "Connected successfully!";
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once('db.php');
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $username, $password, $dbname, $port);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -141,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Combine the password and salt, and hash it using SHA-256
     $hashed_password = hash('sha256', $password . $salt);
 
-    $sql = "INSERT INTO users (username, firstname, lastname, email, password, salt) VALUES ('$username', '$firstname', '$lastname', '$email', '$hashed_password', '$salt')";
+    $sql = "INSERT INTO Uzivatel (uzivatelske_jmeno, jmeno_uzivatele, prijmeni_uzivatele, email_adresa, heslo, salt) VALUES ('$username', '$firstname', '$lastname', '$email', '$hashed_password', '$salt')";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: login.php");
