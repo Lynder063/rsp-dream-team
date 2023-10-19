@@ -1,0 +1,97 @@
+body {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  
+  background: linear-gradient(to left, #4d4d4d 0%, #333333 35%, #333333 65%, #4d4d4d 100%);
+}
+
+.container {
+  width: 70%;
+  margin: 0 auto; 
+  text-align: left; 
+}
+
+header {
+
+  background: transparent;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  overflow: hidden; 
+}
+
+header img {
+  width: 100px;
+  float: left; 
+}
+
+
+header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+button:hover {
+  background-color: cyan;
+}
+
+.main {
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  margin-top: 5px;
+  margin-left: 0;
+  width: 100%;
+}
+
+.left-panel, .right-panel {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 15%;
+}
+
+.left-panel {
+  left: 0;
+  background: transparent;
+}
+
+.right-panel {
+  right: 0;
+  background: transparent;
+}
+
+.uvod {
+  width: auto;
+  height: 400px;
+  background-image: url('mc.jpg');
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+button {
+  width: 200px;
+  height: 55px;
+  background: white;
+  position: absolute;
+  left: 870px;
+  top: 430px;
+  border-radius: 50px;
+  text-align: center;
+  border: 0;
+}
+
