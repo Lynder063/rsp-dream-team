@@ -1,3 +1,9 @@
+*
+{
+    border-radius: 3%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -16,9 +22,19 @@ textarea {
     width: 60%;
     height: 1000px;
     margin: 50px auto;
+    padding-top: 20px;
+    
+}
+.main-content-box1 {
+    background-color: grey;
+    width: 60%;
+    height: 700px;
+    margin: 50px auto;
+    padding-top: 20px;
+    
 }
 .head-content {
-    padding-top: 50px;
+    padding-top: 0px;
     display: flex;
     justify-content: space-between;
     width: 85%;
@@ -73,4 +89,49 @@ h3
     font-family: Arial, Helvetica, sans-serif;
     color: #FFF;
     font-size: larger;
+}
+.profile-img
+{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: white;
+    margin: auto;
+    margin-top: 20px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    color: white;
+    transition: 0.1s;
+}
+.profile-img label 
+{
+    display: block;
+    font-weight: bolder;
+    font-size: 41px;
+    margin: 0; 
+    padding: 0; 
+    text-align: center; 
+   
+}
+.profile-img:hover
+{
+    color: black;
+    
+}
+.change-button
+{
+
+     border-radius: 30px;
+     background-color: rgb(30, 27, 27);
+     width: 50%;
+     height: 70px;
+     text-align: center;
+     margin: 25px auto;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.change-button:hover{
+    scale: 1.08;
 }

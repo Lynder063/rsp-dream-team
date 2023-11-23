@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-content-box1   " >
+        <div class="profile-img" id="profile-img">
+            <input type="file" id="upload" accept="image/jpeg, image/png" style="display: none;" hidden>
+            <label>Text</label>
+        </div>
+        <div class="content-input-box">
+            
+        </div>
+        <div class="change-button">
+            <h3>Uživatelské jméno</h3>
+        </div>
+        <div class="change-button">
+            <h3>Email</h3>
+        </div>
+        <div class="change-button">
+            <h3>Heslo</h3>
+        </div>
+
+    </div>
+    <script>
+        document.getElementById('profile-img').addEventListener('click', function() {
+    document.getElementById('upload').click();
+});
+    </script>
+</body>
+</html>
