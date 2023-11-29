@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    
     <div class="main-content-box1   " >
         <div class="profile-img" id="profile-img">
             <input type="file" id="upload" accept="image/jpeg, image/png" style="display: none;" hidden>
@@ -15,21 +16,74 @@
         <div class="content-input-box">
             
         </div>
-        <div class="change-button">
+        <div class="change-button" >
             <h3>Uživatelské jméno</h3>
         </div>
         <div class="change-button">
             <h3>Email</h3>
         </div>
-        <div class="change-button">
+        <div class="change-button" id="changePasswordBtn">
             <h3>Heslo</h3>
         </div>
 
+        
     </div>
+    <div id="passwordModal" class="modal">
+
+        
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <form id="passwordForm">
+            <label for="currentPassword">Původní heslo:</label>
+            <input type="password" id="currentPassword" name="currentPassword" required>
+            
+            <label for="newPassword">Nové heslo:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+            
+            <label for="confirmPassword">Potvrdit heslo:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            
+            <input type="submit" value="Změnit">
+          </form>
+        </div>
+      
+      </div>
     <script>
         document.getElementById('profile-img').addEventListener('click', function() {
     document.getElementById('upload').click();
 });
+
+var modal = document.getElementById("passwordModal");
+    
+    
+    var btn = document.getElementById("changePasswordBtn");
+    
+   
+    var span = document.getElementsByClassName("close")[0];
+    
+    
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+   
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+  
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    
+    
+    document.getElementById('passwordForm').onsubmit = function(event) {
+      event.preventDefault();
+      
+      alert('Password change logic not implemented yet.');
+    }
     </script>
 </body>
 </html>
