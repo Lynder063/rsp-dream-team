@@ -91,7 +91,7 @@
         <label for="password">Heslo</label>
         <input type="password" id="password" name="password" required><br><br>
         <br>
-        <input type="submit" value="loginAction" class="button">
+        <input type="submit" value="Přihlásit" class="button">
     </form>
 </div>
 </body>
