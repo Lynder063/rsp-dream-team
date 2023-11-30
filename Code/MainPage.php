@@ -129,6 +129,34 @@
             height: 33%;
             padding: 15px;
         }
+        .dropdown-content {
+  display: none;
+  top: 100px;
+  right: 0px;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.show {display: block;}
+
+img
+        {
+            top: 20px;
+            right: 20px;
+            position: absolute;
+            
+        }
   </style>
 
 </head>
@@ -153,10 +181,37 @@
         
     </div>
     <div class="content"></div>
-
+    <div class="content"></div>
+    <div class="dropdown">
+        <img src="menu.png" alt="" onclick="myFunction()" class="dropbtn">
+        <div id="myDropdown" class="dropdown-content">
+          <a href="login.php">Přihlášení</a>
+          <a href="register.php">Registrace</a>
+          <a href="profile_editor.php">Editace profilu</a>
+          <a href="article_editor.php">Tvorba článků</a>
+        </div>
+    </div>
     <footer>
         <p>[Footer]</p>
     </footer>
     </div>
+    <script>
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+    
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+    </script>
 </body>
 </html>
