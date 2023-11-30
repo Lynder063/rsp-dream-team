@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a href="#"><img src="home.png" alt=""></a>
+  <a href="MainPage.php"><img src="home.png" alt=""></a>
   <div class="main-content-box1   " >
     <div class="profile-img" id="profile-img">
         <input type="file" id="upload" accept="image/jpeg, image/png" style="display: none;" hidden>
