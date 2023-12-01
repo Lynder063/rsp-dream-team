@@ -78,11 +78,22 @@
         height: 80vh;
         margin: 0;
     }
+    img
+{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: 1s;
+}
+img:hover
+{
+    transform: scale(1.5);
+}
 </style>
 
 <body>
 
-
+<a href="MainPage.php"><img src="home.png" alt=""></a>
 <h1 class="Reg">Registrace</h1>
 
 <div class="form">
