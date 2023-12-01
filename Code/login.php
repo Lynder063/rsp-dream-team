@@ -99,7 +99,7 @@ img:hover
 <a href="MainPage.php"><img src="home.png" alt=""></a>
 <h1 class="login">Přihlášení</h1>
 <div class="form">
-    <form method="post" class="xd">
+    <form method="post">
 
         <label for="username">Uživatelské jméno</label>
         <input type="text" id="username" name="username" required><br><br>
