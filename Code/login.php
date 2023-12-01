@@ -1,3 +1,7 @@
+<?php
+session_start(); // Start the session
+?>
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -95,7 +99,7 @@ img:hover
 <a href="MainPage.php"><img src="home.png" alt=""></a>
 <h1 class="login">Přihlášení</h1>
 <div class="form">
-    <form action="proces.php" method="post" class="xd">
+    <form method="post" class="xd">
 
         <label for="username">Uživatelské jméno</label>
         <input type="text" id="username" name="username" required><br><br>
@@ -108,5 +112,38 @@ img:hover
 </div>
 </body>
 </html>
+
 <?php
-?>
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once('db.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Fetch user data from the database based on the entered username
+    $sql = "SELECT * FROM Uzivatel WHERE uzivatelske_jmeno = '$username'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $stored_password = $row['heslo'];
+        $stored_salt = $row['salt'];
+
+        // Combine the entered password with the stored salt and hash it
+        $hashed_password = hash('sha256', $password . $stored_salt);
+
+        // Check if the hashed password matches the stored hashed password
+        if ($hashed_password === $stored_password) {
+            $_SESSION['user_id'] = $row['id_uzivatele'];
+            // Authentication successful, redirect to MainPage.php
+            header("Location: MainPage.php");
+            exit;
+        }
+    }
+
+    // TODO FRONTEND: přidat lepší zdělení špatného zadání informací
+    echo "Špatné uživatelské jméno nebo heslo";
+}
