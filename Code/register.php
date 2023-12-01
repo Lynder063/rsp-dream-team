@@ -103,13 +103,13 @@ session_start();
 
 <div class="form">
     <form method="post" id="registrationForm">
-        <label for="username">UĹľivatelskĂ© jmĂ©no</label>
+        <label for="username">Uživatelské jméno</label>
         <input type="text" id="username" name="username" required><br>
 
-        <label for="firstname">JmĂ©no</label>
+        <label for="firstname">Jméno</label>
         <input type="text" id="firstname" name="firstname" required><br>
 
-        <label for="lastname">PĹ™Ă­jmenĂ­</label>
+        <label for="lastname">Příjmení</label>
         <input type="text" id="lastname" name="lastname" required><br>
 
         <label for="email">E-mail</label>
@@ -118,7 +118,7 @@ session_start();
         <label for="password">Heslo</label>
         <input type="password" id="password" name="password" required><br>
 
-        <label for="confirm_password">PotvrÄŹte heslo</label>
+        <label for="confirm_password">Potvrzení hesla</label>
         <input type="password" id="confirm_password" name="confirm_password" required><br>
 
         <br><br>
@@ -137,11 +137,9 @@ require_once('db.php');
 if ($conn->connect_error) {
     echo "Connected NE!1";
     die("Connection failed: " . $conn->connect_error);
-} else {
-    echo "Connected successfully!1";
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"]) && $_POST["submit"] == "Registrovat") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $username = $_POST['username'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
