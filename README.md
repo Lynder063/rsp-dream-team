@@ -9,6 +9,7 @@
   - [Linux](#linux)
 - [Vývoj](#vývoj)
   - [Windows](#windows)
+  - [Linux](#linux-1)
 - [Kontakt](#dotazy)
 
 ### O projektu
@@ -56,17 +57,22 @@ Pro tento tutorial jsem si vybral [XAMPP](https://www.apachefriends.org/)
 
 1. Stáhneme si [XAMPP](https://www.apachefriends.org/)
 ![step_1.png](Images/step_1.png)
-2. Vybereme všechny možnosti
 
+2. Vybereme všechny možnosti
 ![step2.png](Images/step2.png)
+
 3. Otevřeme si složku XAMPP pomocí toho že klikneme na ikonku **Explorer**
 ![step4.png](Images/step4.png)
-4. Zademe do složky **htdocs** a tam naklonujeme tento repositář
+
+4. Zademe do složky kam jsme nainstalovali XAMPP většinou to je `C:\xampp` a do složky `C:\xampp\htdocs` a tam naklonujeme tento repositář
 ![step5.png](Images/step5.png)
+
 5. Pak si otevřeme konfiguraci **httpd.conf**
 ![step6.png](Images/step3.png)
+
 6. Najdeme `DocumentRoot` a upravíme aby to ukazovalo do toho našeho **naklovovaného projektu** do složky **Code**
 ![step6.png](Images/step6.png)
+
 7. A když otevřeme http://localhost tak mam vidět soubory které můžeme otevřít
 ![step7.png](Images/step7.png)
 
