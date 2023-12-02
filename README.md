@@ -58,7 +58,8 @@ Pro tento tutorial jsem si vybral [XAMPP](https://www.apachefriends.org/)
 1. Stáhneme si [XAMPP](https://www.apachefriends.org/)
 ![step_1.png](Images/step_1.png)
 
-2. Vybereme všechny možnosti \
+2. Vybereme všechny možnosti 
+
 ![step2.png](Images/step2.png)
 
 3. Otevřeme si složku XAMPP pomocí toho že klikneme na ikonku **Explorer**
