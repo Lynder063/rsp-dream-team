@@ -109,5 +109,6 @@ fabric.properties
 .ionide
 
 db.php
-
+/Code/uploads
+.idea/
 # End of https://www.toptal.com/developers/gitignore/api/phpstorm+all,visualstudiocode
