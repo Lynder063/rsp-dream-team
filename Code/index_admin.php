@@ -65,7 +65,11 @@ if (!isset($_SESSION['user_id'])) {
                         Menu
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="profile_editor.php">Upravit profil</a>
+                        <a class="dropdown-item" href="profile_editor.php">Přidat článek</a>
+                        <a class="dropdown-item" href="profile_editor.php">Správa článek</a>
+                        <a class="dropdown-item" href="profile_editor.php">Správa uživatelů</a>
+                        <a class="dropdown-item" href="profile_editor.php">Správa komentářů</a>
+                        <a class="dropdown-item" href="profile_editor.php"></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="login.php">Odhlásit</a>
                     </div>

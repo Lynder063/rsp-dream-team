@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css"> <!-- Add your custom styles here -->
+    <link rel="stylesheet" href="styles.css">
 
     <style>
         body {
@@ -44,7 +44,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="MainPage.php">
+        <a class="navbar-brand" href="index.php">
             <img src="home.png" alt="" width="30" height="30" class="d-inline-block align-top">
             [LOGO]
         </a>
@@ -59,18 +59,15 @@
                 <form>
                     <div class="form-group">
                         <label for="title">Nadpis</label>
-                        <textarea class="form-control" id="title" rows="3" minlength="1" maxlength="60"
-                            placeholder="Nadpis"></textarea>
+                        <textarea class="form-control" id="title" rows="3" minlength="1" maxlength="60" placeholder="Nadpis"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="abstract">Abstrakt</label>
-                        <textarea class="form-control" id="abstract" rows="5" minlength="1" maxlength="150"
-                            placeholder="Abstrakt"></textarea>
+                        <textarea class="form-control" id="abstract" rows="5" minlength="1" maxlength="150" placeholder="Abstrakt"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="articleText">Text článku</label>
-                        <textarea class="form-control" id="articleText" rows="10" minlength="1" maxlength="5000"
-                            placeholder="Text článku"></textarea>
+                        <textarea class="form-control" id="articleText" rows="10" minlength="1" maxlength="5000" placeholder="Text článku"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Odeslat</button>
                 </form>
@@ -78,7 +75,6 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
