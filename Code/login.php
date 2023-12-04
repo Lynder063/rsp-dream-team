@@ -25,15 +25,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check if the hashed password matches the stored hashed password
         if ($hashed_password === $stored_password) {
             $_SESSION['user_id'] = $row['id_uzivatele'];
-            // Authentication successful, redirect to MainPage.php
-            header("Location: index.php");
+
+            // Check the user's role
+            $user_role = $row['role_uzivatele'];
+
+            // Redirect based on user's role
+            if ($user_role === 'admin') {
+                header("Location: index_admin.php");
+            } else {
+                header("Location: index.php");
+            }
             exit;
         }
     }
+
     // TODO FRONTEND: přidat lepší zdělení špatného zadání informací
     echo "Špatné uživatelské jméno nebo heslo";
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="cs">
 
