@@ -63,6 +63,7 @@
         </div>
     </nav>
 
+    <!-- ROW 1 -->
     <div class="container">
         <div class="row">
             <div class="col-md-4 mb-4">
@@ -88,9 +89,58 @@
             </div>
         </div>
     </div>
-
-
-
+    <!-- ROW 2 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <img class="rounded img_clanek"
+                    src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
+                <div class="text-center">
+                    <a class="nadpis_clanek">Lorem Ipsum</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <img class="rounded img_clanek"
+                    src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
+                <div class="text-center">
+                    <a class="nadpis_clanek">Lorem Ipsum</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <img class="rounded img_clanek"
+                    src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
+                <div class="text-center">
+                    <a class="nadpis_clanek">Lorem Ipsum</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ROW 3 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <img class="rounded img_clanek"
+                    src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
+                <div class="text-center">
+                    <a class="nadpis_clanek">Lorem Ipsum</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <img class="rounded img_clanek"
+                    src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
+                <div class="text-center">
+                    <a class="nadpis_clanek">Lorem Ipsum</a>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <img class="rounded img_clanek"
+                    src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
+                <div class="text-center">
+                    <a class="nadpis_clanek">Lorem Ipsum</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
