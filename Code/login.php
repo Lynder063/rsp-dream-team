@@ -81,8 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         background-color: grey;
     }
 
-    bmit" value=" Přihlásit" class=" button">
- <a href="register.php">Registrace</a></form></div>input:focus {
+    input:focus {
         background-color: grey;
     }
 
