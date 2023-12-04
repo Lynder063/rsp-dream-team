@@ -1,9 +1,5 @@
 <?php
-// Připojení k databázi
-$servername = "localhost";
-$username = "tvuj_username";
-$password = "tvuj_heslo";
-$dbname = "moje_databaze";
+require_once('db.php');
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
