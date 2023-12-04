@@ -145,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 
 <body>
 
-    <a href="MainPage.php"><img src="home.png" alt=""></a>
+    <a href="index.php"><img src="home.png" alt=""></a>
     <h1 class="Reg">Registrace</h1>
 
     <div class="form">
