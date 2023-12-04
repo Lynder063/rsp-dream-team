@@ -1,7 +1,12 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
     <title>Registarce</title>
+
 </head>
 
 <style>
@@ -78,15 +83,26 @@
         height: 80vh;
         margin: 0;
     }
+    img
+    {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        transition: 1s;
+    }
+    img:hover
+    {
+        transform: scale(1.5);
+    }
 </style>
 
 <body>
 
-
+<a href="MainPage.php"><img src="home.png" alt=""></a>
 <h1 class="Reg">Registrace</h1>
 
 <div class="form">
-    <form method="post">
+    <form method="post" id="registrationForm">
         <label for="username">Uživatelské jméno</label>
         <input type="text" id="username" name="username" required><br>
 
@@ -102,42 +118,35 @@
         <label for="password">Heslo</label>
         <input type="password" id="password" name="password" required><br>
 
-        <label for="confirm_password">Potvrďte heslo</label>
+        <label for="confirm_password">Potvrzení hesla</label>
         <input type="password" id="confirm_password" name="confirm_password" required><br>
 
         <br><br>
-        <input type="submit" value="Registrovat" class="button">
+        <input type="submit" value="Registrovat" class="button" name="submit">
     </form>
 </div>
 </body>
 </html>
 
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 require_once('db.php');
-$conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check the connection
+// Check the connection (You can remove this block if you prefer not to echo anything on successful connection)
 if ($conn->connect_error) {
+    echo "Connected NE!1";
     die("Connection failed: " . $conn->connect_error);
-} else {
-    echo "Connected successfully!";
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require_once('db.php');
-
-    $conn = new mysqli($servername, $username, $password, $dbname, $port);
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     $username = $_POST['username'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
+
 
     // Check if passwords match
     if ($password !== $confirm_password) {
@@ -146,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Generate a random salt
-    $salt = bin2hex(random_bytes(32));
+    $salt = bin2hex(random_bytes(16));
 
     // Combine the password and salt, and hash it using SHA-256
     $hashed_password = hash('sha256', $password . $salt);
@@ -158,8 +167,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-
-    $conn->close();
 }
-
 ?>
+

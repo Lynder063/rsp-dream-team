@@ -7,7 +7,7 @@
         <title>Article editor</title>
     </head>
     <body>
-        <a href="#"><img src="home.png" alt=""></a>
+        <a href="MainPage.php"><img src="home.png" alt=""></a>
         <div class="main-content-box">
             <div class="head-content">
                 <div class="content-box-first">
