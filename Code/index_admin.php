@@ -1,18 +1,18 @@
 <?php
-
-// checking if user is logged in
-
+// checking if the user is logged in
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
 session_start();
+require_once('db.php');
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
 }
 
-
+// Fetch data from the Clanek table
+$sql = "SELECT nazev_clanku, img_url FROM Clanek";
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -66,10 +66,10 @@ if (!isset($_SESSION['user_id'])) {
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="add_article.php">Přidat článek</a>
-                        <a class="dropdown-item" href="profile_editor.php">Správa článek</a>
+                        <a class="dropdown-item" href="list_articles.php">Správa článek</a>
                         <a class="dropdown-item" href="profile_editor.php">Správa uživatelů</a>
-                        <a class="dropdown-item" href="profile_editor.php">Správa komentářů</a>
-                        <a class="dropdown-item" href="profile_editor.php"></a>
+                        <a class="dropdown-item" href="#">Správa komentářů</a>
+                        <a class="dropdown-item" href="#"></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="login.php">Odhlásit</a>
                     </div>
@@ -78,74 +78,44 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </nav>
 
-    <!-- ROW 1 -->
     <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <img class="rounded img_clanek" src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
-                <div class="text-center">
-                    <a class="nadpis_clanek">Lorem Ipsum</a>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <img class="rounded img_clanek" src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
-                <div class="text-center">
-                    <a class="nadpis_clanek">Lorem Ipsum</a>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <img class="rounded img_clanek" src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
-                <div class="text-center">
-                    <a class="nadpis_clanek">Lorem Ipsum</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ROW 2 -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <img class="rounded img_clanek" src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
-                <div class="text-center">
-                    <a class="nadpis_clanek">Lorem Ipsum</a>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <img class="rounded img_clanek" src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
-                <div class="text-center">
-                    <a class="nadpis_clanek">Lorem Ipsum</a>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <img class="rounded img_clanek" src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
-                <div class="text-center">
-                    <a class="nadpis_clanek">Lorem Ipsum</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ROW 3 -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-4">
-                <img class="rounded img_clanek" src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
-                <div class="text-center">
-                    <a class="nadpis_clanek">Lorem Ipsum</a>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <img class="rounded img_clanek" src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
-                <div class="text-center">
-                    <a class="nadpis_clanek">Lorem Ipsum</a>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <img class="rounded img_clanek" src="https://i0.wp.com/impact.hugoapp.com/wp-content/uploads/2021/08/qi-bin-w4hbafegiac-unsplash.jpg?fit=1600%2C1066&ssl=1">
-                <div class="text-center">
-                    <a class="nadpis_clanek">Lorem Ipsum</a>
-                </div>
-            </div>
-        </div>
+        <?php
+        if ($result->num_rows > 0) {
+            $count = 0;
+
+            // Output rows in groups of 3
+            while ($row = $result->fetch_assoc()) {
+                if ($count % 3 == 0) {
+                    // Close previous row if not the first row
+                    if ($count > 0) {
+                        echo '</div>';
+                    }
+
+                    // Open a new row for every 3 records
+                    echo '<div class="row">';
+                }
+
+                $nazevClanku = $row['nazev_clanku'];
+                $imgUrl = $row['img_url'];
+
+                // Output the HTML for each record
+                echo '<div class="col-md-4 mb-4">';
+                echo '<img class="rounded img_clanek" src="' . $imgUrl . '">';
+                echo '<div class="text-center">';
+                echo '<a class="nadpis_clanek">' . $nazevClanku . '</a>';
+                echo '</div>';
+                echo '</div>';
+
+                $count++;
+            }
+
+            // Close the last row
+            echo '</div>';
+        } else {
+            // Handle case when no rows are found
+            echo '<p>No articles found.</p>';
+        }
+        ?>
     </div>
 </body>
 
