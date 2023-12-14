@@ -38,6 +38,9 @@ $result = $conn->query($sql);
         height: 200px;
         width: auto;
     }
+    .navbar-brand{
+        width: 10%;
+    }
     </style>
     <link rel="icon" href="logo.png" type="image/x-icon">
 </head>
