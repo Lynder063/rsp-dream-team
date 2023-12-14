@@ -21,7 +21,7 @@ if (isset($_POST['changeUsernameBtn'])) {
     $userId = $_SESSION['user_id'];
 
     // Starý uživatelský jméno
-    $query = "SELECT uzivatelske_jmeno FROM Uzivatel WHERE id='$userId'";
+    $query = "SELECT uzivatelske_jmeno FROM Uzivatel WHERE id_uzivatele='$userId'";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {
@@ -31,7 +31,7 @@ if (isset($_POST['changeUsernameBtn'])) {
         // Podívej se jestli hodnoty matchují s databází
         if ($oldUsername === $oldUsernameFromDB) {
             // Update
-            $sql = "UPDATE Uzivatel SET uzivatelske_jmeno='$newUsername' WHERE id='$userId'";
+            $sql = "UPDATE Uzivatel SET uzivatelske_jmeno='$newUsername' WHERE id_uzivatele='$userId'";
 
             if ($conn->query($sql) === TRUE) {
                 echo "Uživatelské jméno změněno";
@@ -54,7 +54,7 @@ if (isset($_POST['changeEmailBtn'])) {
     $userId = $_SESSION['user_id'];
 
     // Starý email
-    $query = "SELECT email_adresa FROM Uzivatel WHERE id='$userId'";
+    $query = "SELECT email_adresa FROM Uzivatel WHERE id_uzivatele='$userId'";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {
@@ -64,7 +64,7 @@ if (isset($_POST['changeEmailBtn'])) {
         // Podívej se jestli zadaný email matchuje
         if ($oldEmail === $oldEmailFromDB) {
             // Update
-            $sql = "UPDATE Uzivatel SET email_adresa='$newEmail' WHERE id='$userId'";
+            $sql = "UPDATE Uzivatel SET email_adresa='$newEmail' WHERE id_uzivatele='$userId'";
 
             if ($conn->query($sql) === TRUE) {
                 echo "Email změněn";
@@ -91,7 +91,7 @@ if (isset($_POST['changePasswordBtn'])) {
         echo "Nová hesla se neshodují.";
     } else {
         // Staré heslo a salt
-        $query = "SELECT heslo, salt FROM Uzivatel WHERE id='$userId'";
+        $query = "SELECT heslo, salt FROM Uzivatel WHERE id_uzivatele='$userId'";
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
@@ -105,7 +105,7 @@ if (isset($_POST['changePasswordBtn'])) {
                 $newHashedPassword = hash('sha256', $newPassword . $newSalt);
 
                 // Update
-                $sql = "UPDATE Uzivatel SET heslo='$newHashedPassword', salt='$newSalt' WHERE id='$userId'";
+                $sql = "UPDATE Uzivatel SET heslo='$newHashedPassword', salt='$newSalt' WHERE id_uzivatele='$userId'";
 
                 if ($conn->query($sql) === TRUE) {
                     echo "Heslo změněno";
