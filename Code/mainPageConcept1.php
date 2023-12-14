@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="cs">
+
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title></title>
@@ -64,7 +65,8 @@
         width: 100%;
     }
 
-    .left-panel, .right-panel {
+    .left-panel,
+    .right-panel {
         position: fixed;
         top: 0;
         height: 100%;
@@ -104,28 +106,40 @@
 </style>
 
 <body>
-<div class="container">
-    <header>
-        <img src="vut.png">
-        <h1>MENU</h1>
-    </header>
-    <footer>
-        <h1>FOOTER</h1>
-    </footer>
-    <div class="left-panel">
-        <h1>LEFT PANEL x x x x x xx x xx x x x x x x xx x x x x xx x xx x x xxx x xx x x xxx x x x x xx x xx x x xxx x x x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x x x xx x xx x x x x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x</h1>
+    <div class="container">
+        <header>
+            <img src="vut.png">
+            <h1>MENU</h1>
+        </header>
+        <footer>
+            <h1>FOOTER</h1>
+        </footer>
+        <div class="left-panel">
+            <h1>LEFT PANEL x x x x x xx x xx x x x x x x xx x x x x xx x xx x x xxx x xx x x xxx x x x x xx x xx x x xxx
+                x x x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x x xx x xx x x xx x x x x xx x xx x x xx x x x
+                x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x
+                x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x x x xx x xx x x x x x x x xx x xx x x xx x x
+                x x xx x xx x x xx x x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x</h1>
 
+        </div>
+
+        <div class="main">
+            <h1>V TOMHLE BUDE ČLÁNEK</h1>
+            <div class="uvod"><br><br><br><br><br><br><br>
+                <h1>TOHLE JE ČLÁNEK</h1>
+            </div>
+
+        </div>
+        <div class="right-panel">
+            <h1>RIGHT PANEL x x x x x xx x xx x x x x x x x x xx x xx x x xx x x x x x xx x xxx x x x x xx x xx x x xxx
+                x x x x xx x xx x x xx x x xxx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x x xx x xx x x xx x
+                x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x
+                xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x
+                x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x x</h1>
+
+        </div>
+        <h1>DALŠÍ ČLÁNKY</h1>
     </div>
-
-    <div class="main"><h1>V TOMHLE BUDE ČLÁNEK</h1>
-        <div class="uvod"><br><br><br><br><br><br><br><h1>TOHLE JE ČLÁNEK</h1></div>
-
-    </div>
-    <div class="right-panel">
-        <h1>RIGHT PANEL x x x x x xx x xx x x x x x x x x xx x xx x x xx x x x x x xx x xxx x x x x xx x xx x x xxx x x x x xx x xx x x xx x x xxx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x xx x x x x xx x xx x x x</h1>
-
-    </div>
-    <h1>DALŠÍ ČLÁNKY</h1>
-</div>
 </body>
+
 </html>
