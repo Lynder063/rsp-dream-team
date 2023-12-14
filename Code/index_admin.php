@@ -35,11 +35,12 @@ $result = $conn->query($sql);
             width: auto;
         }
     </style>
+    <link rel="icon" href="logo.png" type="image/x-icon">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index_admin.php">Navbar</a>
+        <a class="navbar-brand" href="index_admin.php"><img src="logo.png" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -100,11 +101,11 @@ $result = $conn->query($sql);
 
                 // Output the HTML for each record
                 echo '<div class="col-md-4 mb-4">';
-                echo '<img class="rounded img_clanek" src="' . $imgUrl . '">';
-                echo '<div class="text-center">';
-                echo '<a class="nadpis_clanek">' . $nazevClanku . '</a>';
-                echo '</div>';
-                echo '</div>';
+            echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '"><img class="rounded img_clanek" src="' . $imgUrl . '"></a>';
+            echo '<div class="text-center">';
+            echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '" class="nadpis_clanek">' . $nazevClanku . '</a>'; 
+            echo '</div>';
+            echo '</div>';
 
                 $count++;
             }
