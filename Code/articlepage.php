@@ -33,23 +33,12 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Article Page</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             background-color: #202124;
             color: black;
-        }
-        .headerrrrr
-        {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            transition: 1s;
-        }
-        .headerrrrr:hover
-        {
-            transform: scale(1.5);
         }
     </style>
 </head>
