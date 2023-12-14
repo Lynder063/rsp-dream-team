@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Fetch data from the Clanek table
-$sql = "SELECT nazev_clanku, img_url FROM Clanek";
+$sql = "SELECT nazev_clanku, img_url, id_clanku FROM Clanek";
 $result = $conn->query($sql);
 ?>
 
@@ -102,11 +102,11 @@ $result = $conn->query($sql);
 
                 // Output the HTML for each record
                 echo '<div class="col-md-4 mb-4">';
-                echo '<img class="rounded img_clanek" src="' . $imgUrl . '">';
-                echo '<div class="text-center">';
-                echo '<a class="nadpis_clanek">' . $nazevClanku . '</a>';
-                echo '</div>';
-                echo '</div>';
+            echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '"><img class="rounded img_clanek" src="' . $imgUrl . '"></a>';
+            echo '<div class="text-center">';
+            echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '" class="nadpis_clanek">' . $nazevClanku . '</a>'; 
+            echo '</div>';
+            echo '</div>';
 
                 $count++;
             }
