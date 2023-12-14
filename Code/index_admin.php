@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Fetch data from the Clanek table
-$sql = "SELECT nazev_clanku, img_url FROM Clanek";
+$sql = "SELECT nazev_clanku, img_url, id_clanku FROM Clanek";
 $result = $conn->query($sql);
 ?>
 
