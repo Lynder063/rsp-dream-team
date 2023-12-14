@@ -102,9 +102,9 @@ $result = $conn->query($sql);
 
                 // Output the HTML for each record
                 echo '<div class="col-md-4 mb-4">';
-            echo '<a href="article_page.php?id_clanku=' . $row['id_clanku'] . '"><img class="rounded img_clanek" src="' . $imgUrl . '"></a>';
+            echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '"><img class="rounded img_clanek" src="' . $imgUrl . '"></a>';
             echo '<div class="text-center">';
-            echo '<a href="article_page.php?id_clanku=' . $row['id_clanku'] . '" class="nadpis_clanek">' . $nazevClanku . '</a>'; 
+            echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '" class="nadpis_clanek">' . $nazevClanku . '</a>'; 
             echo '</div>';
             echo '</div>';
 
