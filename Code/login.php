@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Check the user's role
             $user_role = $row['role_uzivatele'];
-
+            header("Location: index.php");
             // Redirect based on user's role
             if ($user_role === 'admin') {
                 header("Location: index_admin.php");

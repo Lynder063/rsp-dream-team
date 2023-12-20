@@ -25,13 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         exit;
     }
 
+    $role = 2;
     // Generate a random salt
     $salt = bin2hex(random_bytes(16));
 
     // Combine the password and salt, and hash it using SHA-256
     $hashed_password = hash('sha256', $password . $salt);
 
-    $sql = "INSERT INTO Uzivatel (uzivatelske_jmeno, jmeno_uzivatele, prijmeni_uzivatele, email_adresa, heslo, salt, role_uzivatele) VALUES ('$username', '$firstname', '$lastname', '$email', '$hashed_password', '$salt', 'user')";
+    $sql = "INSERT INTO Uzivatel (uzivatelske_jmeno, jmeno_uzivatele, prijmeni_uzivatele, email_adresa, heslo, salt, role_uzivatele) VALUES ('$username', '$firstname', '$lastname', '$email', '$hashed_password', '$salt', '$role')";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: login.php");
