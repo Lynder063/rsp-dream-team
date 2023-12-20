@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="index_admin.php"><img src="logo.png" alt=""></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light"><a href="index.php"><img src="home.png" height="45px" width="45px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -29,7 +29,7 @@
 
                     <?php if (isset($_SESSION['user_id']) && isset($user_role)) : ?>
                         <?php if ($user_role == 3) : ?>
-                            <a class="dropdown-item" href="add_article.php">Přidat nový příspěvěk</a>
+                            <a class="dropdown-item" href="add_article.php">Přidat nový příspěvek</a>
                         <?php elseif ($user_role == 4) : ?>
                             <a class="dropdown-item" href="list_articles.php">Stav příspěvků</a>
                             <a class="dropdown-item" href="#">Správa témat</a>
