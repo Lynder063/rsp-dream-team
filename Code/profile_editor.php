@@ -2,6 +2,8 @@
 session_start();
 require_once('db.php');
 
+$user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
+
 // Je uživatel přihlášen ?
 if (!isset($_SESSION['user_id'])) {
     // Jestli ne jde na login
