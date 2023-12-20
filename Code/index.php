@@ -10,10 +10,15 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+// Uložení role uživatele ze session do proměnné user_role
+$user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
+
 // Fetch data from the Clanek table
 $sql = "SELECT nazev_clanku, img_url, id_clanku FROM Clanek";
 $result = $conn->query($sql);
+echo $user_role;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="cz">
@@ -22,34 +27,30 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Časopis VŠPJ</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <style>
-    .img_clanek {
-        height: 200px;
-        width: auto;
-    }
-    .navbar-brand{
-        width: 10%;
-    }
+        .img_clanek {
+            height: 200px;
+            width: auto;
+        }
+
+        .navbar-brand {
+            width: 10%;
+        }
     </style>
     <link rel="icon" href="logo.png" type="image/x-icon">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="logo.png" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="index_admin.php"><img src="logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -70,12 +71,30 @@ $result = $conn->query($sql);
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Menu
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="profile_editor.php">Upravit profil</a>
+
+                        <?php if (isset($_SESSION['user_id']) && isset($user_role)) : ?>
+                            <?php if ($user_role == 3) : ?>
+                                <a class="dropdown-item" href="add_article.php">Přidat nový příspěvěk</a>
+                            <?php elseif ($user_role == 4) : ?>
+                                <a class="dropdown-item" href="list_articles.php">Stav příspěvků</a>
+                                <a class="dropdown-item" href="#">Správa témat</a>
+                            <?php elseif ($user_role == 5) : ?>
+                                <a class="dropdown-item" href="list_articles.php">Stav příspěvků</a>
+                                <a class="dropdown-item" href="#">Správa recenzí</a>
+                            <?php elseif ($user_role == 6) : ?>
+                                <a class="dropdown-item" href="#">Správa databáze</a>
+                                <a class="dropdown-item" href="#">Správa serveru</a>
+                                <a class="dropdown-item" href="#">Správa webu</a>
+                            <?php endif; ?>
+                        <?php else : ?>
+                            <a class="dropdown-item" href="login.php">Přihlásit</a>
+                        <?php endif; ?>
+
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="login.php">Odhlásit</a>
                     </div>
@@ -106,11 +125,11 @@ $result = $conn->query($sql);
 
                 // Output the HTML for each record
                 echo '<div class="col-md-4 mb-4">';
-            echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '"><img class="rounded img_clanek" src="' . $imgUrl . '"></a>';
-            echo '<div class="text-center">';
-            echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '" class="nadpis_clanek">' . $nazevClanku . '</a>'; 
-            echo '</div>';
-            echo '</div>';
+                echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '"><img class="rounded img_clanek" src="' . $imgUrl . '"></a>';
+                echo '<div class="text-center">';
+                echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '" class="nadpis_clanek">' . $nazevClanku . '</a>';
+                echo '</div>';
+                echo '</div>';
 
                 $count++;
             }
