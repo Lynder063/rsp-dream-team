@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <?php include 'navbar.php'; ?>
 
     <div class="container mt-5">
         <h2>List of Articles</h2>

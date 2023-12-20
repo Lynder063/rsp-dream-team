@@ -60,6 +60,7 @@ $conn->close();
 ?>
 
 <!-- Formulář pro přidání komentáře -->
+
 <form method="post" action="">
     Jméno: <input type="text" name="jmeno"><br>
     Text: <textarea name="text"></textarea><br>
