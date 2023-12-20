@@ -121,10 +121,6 @@ if (isset($_POST['changePasswordBtn'])) {
         }
     }
 }
-
-
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -133,49 +129,121 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile editor</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Profile Editor</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .main-content-box {
+            width: 400px;
+            text-align: center;
+            margin: auto;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            display: none;
+        }
+
+        .form-group.active {
+            display: block;
+        }
+
+        .username-display {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <?php include 'navbar.php'; ?>
-    <a href="index.php"><img src="home.png" alt=""></a>
-    <div class="main-content-box1   ">
-        <div class="change-button" id="changeUsernameBtn">
-            <h3>Uživatelské jméno</h3>
-            <form method="post">
-                <label for="oldUsername">Staré uživatelské jméno:</label>
-                <input type="text" name="oldUsername" required>
-                <label for="newUsername">Nové uživatelské jméno:</label>
-                <input type="text" name="newUsername" required>
-                <button type="submit" name="changeUsernameBtn">Změnit</button>
-            </form>
-        </div>
-        <div class="change-button">
-            <h3>Email</h3>
-            <form method="post">
-                <label for="oldEmail">Starý email:</label>
-                <input type="email" name="oldEmail" required>
-                <label for="newEmail">Nový email:</label>
-                <input type="email" name="newEmail" required>
-                <button type="submit" name="changeEmailBtn">Změnit</button>
-            </form>
-        </div>
-        <div class="change-button" id="changePasswordBtn">
-            <h3>Heslo</h3>
-            <form method="post">
-                <label for="oldPassword">Staré heslo:</label>
-                <input type="password" name="oldPassword" required>
-                <label for="newPassword">Nové heslo:</label>
-                <input type="password" name="newPassword" required>
-                <label for="newPasswordAgain">Nové heslo:</label>
-                <input type="password" name="newPasswordAgain" required>
-                <button type="submit" name="changePasswordBtn">Změnit</button>
-            </form>
-        </div>
+<?php include 'navbar.php'; ?>
+<a href="index.php"><img src="home.png" alt=""></a>
+<div class="main-content-box">
+
+    <div class="username-display">
+        <?php
+        // Display the username of the logged-in user
+        if (isset($_SESSION['user_id'])) {
+            $userId = $_SESSION['user_id'];
+            $query = "SELECT uzivatelske_jmeno FROM Uzivatel WHERE id_uzivatele='$userId'";
+            $result = $conn->query($query);
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                echo $row['uzivatelske_jmeno'];
+            }
+        }
+
+        $conn->close();
+        ?>
     </div>
+
+    <div class="btn-group">
+        <button class="btn btn-primary show-form" data-target="changeUsername">Uživatelské jméno</button>
+        <button class="btn btn-primary show-form" data-target="changeEmail">Email</button>
+        <button class="btn btn-primary show-form" data-target="changePassword">Heslo</button>
+    </div>
+
+    <div id="changeUsername" class="form-group">
+        <br>
+        <h3>Uživatelské jméno</h3>
+        <form method="post">
+            <label for="oldUsername">Staré uživatelské jméno:</label>
+            <input type="text" name="oldUsername" class="form-control" required>
+            <label for="newUsername">Nové uživatelské jméno:</label>
+            <input type="text" name="newUsername" class="form-control" required>
+            <br>
+            <button type="submit" name="changeUsernameBtn" class="btn btn-primary">Změnit</button>
+        </form>
+    </div>
+
+    <div id="changeEmail" class="form-group">
+        <br>
+        <h3>Email</h3>
+        <form method="post">
+            <label for="oldEmail">Starý email:</label>
+            <input type="email" name="oldEmail" class="form-control" required>
+            <label for="newEmail">Nový email:</label>
+            <input type="email" name="newEmail" class="form-control" required>
+            <br>
+            <button type="submit" name="changeEmailBtn" class="btn btn-primary">Změnit</button>
+        </form>
+    </div>
+
+    <div id="changePassword" class="form-group">
+        <br>
+        <h3>Heslo</h3>
+        <form method="post">
+            <label for="oldPassword">Staré heslo:</label>
+            <input type="password" name="oldPassword" class="form-control" required>
+            <label for="newPassword">Nové heslo:</label>
+            <input type="password" name="newPassword" class="form-control" required>
+            <label for="newPasswordAgain">Nové heslo znovu:</label>
+            <input type="password" name="newPasswordAgain" class="form-control" required>
+            <br>
+            <button type="submit" name="changePasswordBtn" class="btn btn-primary">Změnit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.show-form');
+        const formGroups = document.querySelectorAll('.form-group');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const targetId = this.dataset.target;
+                formGroups.forEach(group => group.classList.remove('active'));
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    });
+</script>
 </body>
 
 </html>
