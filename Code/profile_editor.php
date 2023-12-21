@@ -144,6 +144,8 @@ if (isset($_POST['changePasswordBtn'])) {
 
         .btn-group {
             margin-top: 20px;
+            display: flex;
+            gap: 10px;
         }
 
         .form-group {
