@@ -65,16 +65,22 @@ $result = $conn->query($sql);
 
 <div class="container">
     <form method="get" class="mb-4">
-        <label for="category">Vyberte kategorii:</label>
-        <select name="category" id="category" class="form-control">
-            <option value="">Všechny kategorie</option>
-            <?php while ($categoryRow = $categoryResult->fetch_assoc()): ?>
-                <option value="<?php echo $categoryRow['id_kategorie']; ?>" <?php echo ($categoryRow['id_kategorie'] == $categoryFilter) ? 'selected' : ''; ?>>
-                    <?php echo $categoryRow['nazev_kategorie']; ?>
-                </option>
-            <?php endwhile; ?>
-        </select>
-        <button type="submit" class="btn btn-primary mt-2">Filtrovat</button>
+        <div class="form-row">
+            <div class="col-md-2 mb-2">
+                <label for="category">Vyberte kategorii:</label>
+                <select name="category" id="category" class="form-control">
+                    <option value="">Všechny kategorie</option>
+                    <?php while ($categoryRow = $categoryResult->fetch_assoc()): ?>
+                        <option value="<?php echo $categoryRow['id_kategorie']; ?>" <?php echo ($categoryRow['id_kategorie'] == $categoryFilter) ? 'selected' : ''; ?>>
+                            <?php echo $categoryRow['nazev_kategorie']; ?>
+                        </option>
+                    <?php endwhile; ?>
+                </select>
+            </div>
+            <div class="col-md-2 mb-2 align-self-end">
+                <button type="submit" class="btn btn-primary">Filtrovat</button>
+            </div>
+        </div>
     </form>
 
     <?php
