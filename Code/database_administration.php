@@ -4,7 +4,7 @@ require_once('db.php');
 
 $user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
 
-// Check if the user is logged in and has admin role
+// Check if the user is logged in and has an admin role
 if (!isset($_SESSION['user_id']) || $user_role != 6) {
     // If not, redirect to login or handle unauthorized access
     header("Location: login.php");
@@ -61,6 +61,8 @@ $tables = getTables($conn);
 
         .entry-list {
             display: none;
+            overflow-x: auto;
+            max-width: 100%;
         }
 
         .entry-list.active {
@@ -71,6 +73,38 @@ $tables = getTables($conn);
             overflow-x: auto;
             max-width: 100%;
         }
+
+        .table-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-container table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+
+        .table-button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .table-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
@@ -80,45 +114,52 @@ $tables = getTables($conn);
     <div class="main-content-box">
         <h2>Database Administration</h2>
 
+        <div class="btn-group">
+            <?php foreach ($tables as $table): ?>
+                <button class="table-button" data-target="<?php echo $table; ?>"><?php echo $table; ?></button>
+            <?php endforeach; ?>
+        </div>
+
         <div class="table-list">
             <?php foreach ($tables as $table): ?>
-                <h3><?php echo $table; ?></h3>
-                <div class="table-container">
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <?php
-                            // Fetch column names for each table
-                            $columns = array();
-                            $result = $conn->query("DESCRIBE $table");
-                            while ($row = $result->fetch_assoc()) {
-                                if ($table === 'uzivatel' && ($row['Field'] === 'heslo' || $row['Field'] === 'salt')) {
-                                    continue; // Skip 'heslo' and 'salt' columns for 'uzivatel' table
-                                }
-                                $columns[] = $row['Field'];
-                            }
-                            foreach ($columns as $column): ?>
-                                <th><?php echo $column; ?></th>
-                            <?php endforeach; ?>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        // Fetch entries for each table
-                        $entries = array();
-                        $result = $conn->query("SELECT * FROM $table");
-                        while ($row = $result->fetch_assoc()) {
-                            $entries[] = $row;
-                        }
-                        foreach ($entries as $entry): ?>
+                <div class="entry-list" id="<?php echo $table; ?>">
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
                             <tr>
-                                <?php foreach ($columns as $column): ?>
-                                    <td><?php echo $entry[$column]; ?></td>
+                                <?php
+                                // Fetch column names for each table
+                                $columns = array();
+                                $result = $conn->query("DESCRIBE $table");
+                                while ($row = $result->fetch_assoc()) {
+                                    if ($table === 'uzivatel' && ($row['Field'] === 'heslo' || $row['Field'] === 'salt')) {
+                                        continue; // Skip 'heslo' and 'salt' columns for 'uzivatel' table
+                                    }
+                                    $columns[] = $row['Field'];
+                                }
+                                foreach ($columns as $column): ?>
+                                    <th><?php echo $column; ?></th>
                                 <?php endforeach; ?>
                             </tr>
-                        <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            <?php
+                            // Fetch entries for each table
+                            $entries = array();
+                            $result = $conn->query("SELECT * FROM $table");
+                            while ($row = $result->fetch_assoc()) {
+                                $entries[] = $row;
+                            }
+                            foreach ($entries as $entry): ?>
+                                <tr>
+                                    <?php foreach ($columns as $column): ?>
+                                        <td><?php echo $entry[$column]; ?></td>
+                                    <?php endforeach; ?>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -127,12 +168,12 @@ $tables = getTables($conn);
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const tableHeaders = document.querySelectorAll('.table-list h3');
+        const tableButtons = document.querySelectorAll('.table-button');
         const entryLists = document.querySelectorAll('.entry-list');
 
-        tableHeaders.forEach(header => {
-            header.addEventListener('click', function () {
-                const targetId = this.textContent;
+        tableButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const targetId = this.dataset.target;
                 entryLists.forEach(list => list.classList.remove('active'));
                 document.getElementById(targetId).classList.add('active');
             });
