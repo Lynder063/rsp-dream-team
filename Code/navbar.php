@@ -60,6 +60,7 @@
                     <a class="dropdown-item" href="#">Správa databáze</a>
                     <a class="dropdown-item" href="#">Správa serveru</a>
                     <a class="dropdown-item" href="#">Správa webu</a>
+                    <a class="dropdown-item" href="edit_roles.php">Správa rolí</a>
                     <?php endif; ?>
                     <?php else : ?>
                     <a class="dropdown-item" href="login.php">Přihlásit</a>
