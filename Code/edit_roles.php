@@ -6,6 +6,8 @@ require_once('db.php');
 
 session_start(); // Start the session
 
+$user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
+
 $successMessage = "";
 $errorMessage = "";
 
