@@ -51,7 +51,7 @@ $tables = getTables($conn);
             margin-top: 20px;
         }
 
-        .pozadi{
+        .pozadi {
             flex: 1;
             background-color: lightgrey;
             width: 60%;
@@ -59,6 +59,14 @@ $tables = getTables($conn);
             padding: 20px;
             border-radius: 10px;
             color: black;
+        }
+
+        .entry-list {
+            display: none;
+        }
+
+        .entry-list.active {
+            display: block;
         }
     </style>
 </head>
@@ -71,14 +79,48 @@ $tables = getTables($conn);
 
         <div class="table-list">
             <h3>Available Tables:</h3>
-            <ul>
+            <div class="btn-group">
                 <?php foreach ($tables as $table): ?>
-                    <li><?php echo $table; ?></li>
+                    <button class="btn btn-primary show-entries" data-target="<?php echo $table; ?>"><?php echo $table; ?></button>
                 <?php endforeach; ?>
-            </ul>
+            </div>
         </div>
+
+        <?php foreach ($tables as $table): ?>
+            <div id="<?php echo $table; ?>" class="entry-list">
+                <h3>Entries for <?php echo $table; ?>:</h3>
+                <?php
+                // Fetch entries for each table
+                $entries = array();
+                $result = $conn->query("SELECT * FROM $table");
+                while ($row = $result->fetch_assoc()) {
+                    $entries[] = $row;
+                }
+                ?>
+                <ul>
+                    <?php foreach ($entries as $entry): ?>
+                        <li><?php echo json_encode($entry); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const showEntriesButtons = document.querySelectorAll('.show-entries');
+        const entryLists = document.querySelectorAll('.entry-list');
+
+        showEntriesButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const targetId = this.dataset.target;
+                entryLists.forEach(list => list.classList.remove('active'));
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    });
+</script>
 </body>
 
 </html>
