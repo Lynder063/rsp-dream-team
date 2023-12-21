@@ -42,7 +42,6 @@ $result = $conn->query($sql);
             margin: 10px auto;
             padding: 20px;
             border-radius: 10px;
-
         }
 
         .img_clanek {
