@@ -5,7 +5,7 @@ session_start();
 // Include the database connection file
 require_once('db.php');
 
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) || $user_role != 6) {
     header("Location: login.php");
     exit;
 }
