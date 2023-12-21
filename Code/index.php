@@ -28,7 +28,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
-            background: linear-gradient(to left, #4d4d4d 0%, #333333 40%, #333333 60%, #4d4d4d 100%);
+            background: linear-gradient(to left, #4d4d4d 0%, #333333 15%, #333333 85%, #4d4d4d 100%);
             margin: 0;
             min-height: 100vh;
             display: flex;
@@ -37,7 +37,7 @@ $result = $conn->query($sql);
 
         .container {
             flex: 1;
-            background-color: #595959;
+            background-color: lightgrey;
             width: 60%;
             margin: 10px auto;
             padding: 20px;
