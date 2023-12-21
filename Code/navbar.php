@@ -57,7 +57,7 @@
                     <a class="dropdown-item" href="list_articles.php">Stav příspěvků</a>
                     <a class="dropdown-item" href="#">Správa recenzí</a>
                     <?php elseif ($user_role == 6) : ?>
-                    <a class="dropdown-item" href="#">Správa databáze</a>
+                    <a class="dropdown-item" href="database_administration.php">Správa databáze</a>
                     <a class="dropdown-item" href="#">Správa serveru</a>
                     <a class="dropdown-item" href="#">Správa webu</a>
                     <?php endif; ?>
