@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-
+    <title>Editace rolí</title>
     <style>
         body {
             background-color: #202124;
@@ -89,7 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </style>
 
-    <title>User Management</title>
 </head>
 
 <body>
