@@ -1,5 +1,4 @@
 <?php
-// checking if the user is logged in
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 session_start();
@@ -13,8 +12,16 @@ if (!isset($_SESSION['user_id'])) {
 // Uložení role uživatele ze session do proměnné user_role
 $user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
 
-// Fetch data from the Clanek table
+// Fetch data for the category dropdown
+$categoryQuery = "SELECT id_kategorie, nazev_kategorie FROM kategorie_clanku";
+$categoryResult = $conn->query($categoryQuery);
+
+// Fetch data from the Clanek table based on the selected category
+$categoryFilter = isset($_GET['category']) ? (int)$_GET['category'] : null;
 $sql = "SELECT nazev_clanku, img_url, id_clanku FROM Clanek";
+if ($categoryFilter !== null) {
+    $sql .= " WHERE id_kategorie = $categoryFilter";
+}
 $result = $conn->query($sql);
 ?>
 
@@ -57,8 +64,21 @@ $result = $conn->query($sql);
 <?php include 'navbar.php'; ?>
 
 <div class="container">
+    <form method="get" class="mb-4">
+        <label for="category">Select Category:</label>
+        <select name="category" id="category" class="form-control">
+            <option value="">All Categories</option>
+            <?php while ($categoryRow = $categoryResult->fetch_assoc()): ?>
+                <option value="<?php echo $categoryRow['id_kategorie']; ?>" <?php echo ($categoryRow['id_kategorie'] == $categoryFilter) ? 'selected' : ''; ?>>
+                    <?php echo $categoryRow['nazev_kategorie']; ?>
+                </option>
+            <?php endwhile; ?>
+        </select>
+        <button type="submit" class="btn btn-primary mt-2">Filter</button>
+    </form>
+
     <?php
-    $count = 0; // Přesun inicializace proměnné $count sem
+    $count = 0;
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
