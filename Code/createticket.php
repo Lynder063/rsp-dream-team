@@ -5,6 +5,8 @@ require_once('db.php');
 $successMessage = '';
 $errorMessage = '';
 
+$user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ticketText = $_POST['ticketText'];
 
