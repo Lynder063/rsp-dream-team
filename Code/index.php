@@ -53,6 +53,12 @@ $result = $conn->query($sql);
             border-radius: 10px;
         }
 
+        .categoryLabel {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
         .img_clanek {
             height: 200px;
             width: auto;
@@ -69,7 +75,7 @@ $result = $conn->query($sql);
     <form method="get" class="mb-4">
         <div class="form-row">
             <div class="col-md-2 mb-2">
-                <label for="category">Vyberte kategorii:</label>
+                <label for="category" class="categoryLabel">Vyberte kategorii:</label>
                 <select name="category" id="category" class="form-control">
                     <option value="0">Všechny kategorie</option>
                     <?php while ($categoryRow = $categoryResult->fetch_assoc()): ?>
