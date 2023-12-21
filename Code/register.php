@@ -147,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 
 <body>
 
-    <a href="index.php"><img src="home.png" alt=""></a>
+    <a href="index.php"><img src="../Grafika/home.png" alt=""></a>
 
 
 

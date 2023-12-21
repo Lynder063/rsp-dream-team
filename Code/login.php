@@ -143,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </style>
 
 <body>
-<a href="index.php"><img src="home.png" alt=""></a>
+<a href="index.php"><img src="../Grafika/home.png" alt=""></a>
 
 <div class="form">
     <form method="post">
