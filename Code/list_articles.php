@@ -1,3 +1,18 @@
+<?php
+
+require_once('db.php');
+
+$user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
+
+// Check if the user is logged in and has an admin role
+if (!isset($_SESSION['user_id']) || $user_role != 6) {
+    // If not, redirect to login or handle unauthorized access
+    header("Location: login.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +20,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List Articles</title>
-    <!-- Include Bootstrap CSS and Icons -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css">
 </head>
@@ -88,18 +102,11 @@
         echo '<div class="alert alert-info">No articles found.</div>';
     }
 
-    // Close the database connection
     $conn->close();
     ?>
 
     </div>
 
-    <!-- Include Bootstrap JS and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <!-- JavaScript for handling delete button click -->
     <script>
     $(document).ready(function() {
         $('.delete-btn').click(function() {
