@@ -5,7 +5,7 @@ require_once('db.php');
 $user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
 
 // Check if the user is logged in and has admin role
-if (!isset($_SESSION['user_id']) || $user_role == 6) {
+if (!isset($_SESSION['user_id']) || $user_role != 6) {
     // If not, redirect to login or handle unauthorized access
     header("Location: login.php");
     exit();
@@ -100,7 +100,6 @@ $tables = getTables($conn);
                             foreach ($columns as $column): ?>
                                 <th><?php echo $column; ?></th>
                             <?php endforeach; ?>
-                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -116,18 +115,6 @@ $tables = getTables($conn);
                                 <?php foreach ($columns as $column): ?>
                                     <td><?php echo $entry[$column]; ?></td>
                                 <?php endforeach; ?>
-                                <td>
-                                    <form method="post" action="edit_entry.php">
-                                        <input type="hidden" name="table" value="<?php echo $table; ?>">
-                                        <input type="hidden" name="id" value="<?php echo $entry['id']; ?>">
-                                        <button type="submit" class="btn btn-warning btn-sm">Edit</button>
-                                    </form>
-                                    <form method="post" action="delete_entry.php" onsubmit="return confirm('Are you sure you want to delete this entry?');">
-                                        <input type="hidden" name="table" value="<?php echo $table; ?>">
-                                        <input type="hidden" name="id" value="<?php echo $entry['id']; ?>">
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
-                                </td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>
