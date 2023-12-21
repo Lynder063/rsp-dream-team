@@ -5,12 +5,14 @@ session_start();
 // Include the database connection file
 require_once('db.php');
 
-if (!isset($_SESSION['user_id']) || $user_role != 6) {
-    header("Location: login.php");
-    exit;
-}
-
 $user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
+
+// Check if the user is logged in and has an admin role
+if (!isset($_SESSION['user_id']) || $user_role != 6) {
+    // If not, redirect to login or handle unauthorized access
+    header("Location: login.php");
+    exit();
+}
 
 
 // Check if form is submitted
