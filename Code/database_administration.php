@@ -36,6 +36,10 @@ $tables = getTables($conn);
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <style>
+        h2{
+            text-align: center;
+        }
+
         .main-content-box {
             width: 80%;
             margin: auto;
@@ -112,7 +116,7 @@ $tables = getTables($conn);
 <?php include 'navbar.php'; ?>
 <div class="pozadi">
     <div class="main-content-box">
-        <h2>Database Administration</h2>
+        <h2>Správa databáze</h2>
 
         <div class="btn-group">
             <?php foreach ($tables as $table): ?>
