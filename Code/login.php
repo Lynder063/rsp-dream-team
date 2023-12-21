@@ -54,16 +54,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     form {
         background-color: rgb(255, 255, 255, 0.1);
-        ;
         padding: 50px;
+        padding-top: 20px;
         width: 250px;
-        height: 250px;
+        height: 450px;
         text-align: center;
         font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
         font-size: 20px;
         color: silver;
         font-weight: bold;
         border-radius: 10px;
+        margin-top: 150px;
 
     }
 
@@ -84,10 +85,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         text-align: center;
         font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
         font-size: 40px;
-        color: silver;
+        color: white;
         font-weight: bold;
 
     }
+
 
     .button {
         background-color: #222;
@@ -112,6 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         -webkit-user-select: none;
         touch-action: manipulation;
         width: 80%;
+        margin-top: 13px ;
     }
 
     .button:hover,
@@ -130,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     img {
         position: absolute;
         top: 20px;
-        right: 20px;
+        left: 20px;
         transition: 1s;
     }
 
@@ -141,10 +144,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <a href="index.php"><img src="home.png" alt=""></a>
-    <h1 class="login">Přihlášení</h1>
+
     <div class="form">
         <form method="post">
-
+            <h1 class="login">Přihlášení</h1>
+            <br>
             <label for="username">Uživatelské jméno</label>
             <input type="text" id="username" name="username" required><br><br>
 
@@ -152,7 +156,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" id="password" name="password" required><br><br>
             <br>
             <input type="submit" value="Přihlásit" class="button">
-            <a href="register.php">Registrace</a>
+            <input type="submit" value="Registrace" class="button">
+
         </form>
     </div>
 </body>

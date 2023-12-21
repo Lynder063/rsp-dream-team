@@ -58,16 +58,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 
     form {
         background-color: rgb(255, 255, 255, 0.1);
-        ;
         padding: 50px;
+        padding-top: 10px;
         width: 250px;
-        height: 420px;
+        height: 600px;
         text-align: center;
         font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
         font-size: 20px;
         color: silver;
         font-weight: bold;
         border-radius: 10px;
+        margin-top: 160px;
 
     }
 
@@ -89,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         text-align: center;
         font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
         font-size: 40px;
-        color: silver;
+        color: white;
         font-weight: bold;
 
     }
@@ -135,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     img {
         position: absolute;
         top: 20px;
-        right: 20px;
+        left: 20px;
         transition: 1s;
     }
 
@@ -147,10 +148,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 <body>
 
     <a href="index.php"><img src="home.png" alt=""></a>
-    <h1 class="Reg">Registrace</h1>
+
+
 
     <div class="form">
+
         <form method="post" id="registrationForm">
+            <h1 class="Reg">Registrace</h1>
             <label for="username">Uživatelské jméno</label>
             <input type="text" id="username" name="username" required><br>
 
