@@ -134,6 +134,7 @@ if (isset($_POST['changePasswordBtn'])) {
     <title>Profile Editor</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <style>
         .main-content-box {
             width: 400px;
@@ -158,14 +159,25 @@ if (isset($_POST['changePasswordBtn'])) {
             font-weight: bold;
             margin-bottom: 10px;
         }
+
+        .pozadi{
+            flex: 1;
+            background-color: lightgrey;
+            width: 60%;
+            margin: 10px auto;
+            padding: 20px;
+            border-radius: 10px;
+
+            color: black;
+        }
     </style>
 </head>
 
 <body>
 <?php include 'navbar.php'; ?>
-<a href="index.php"><img src="home.png" alt=""></a>
+<div class="pozadi">
 <div class="main-content-box">
-
+    <br>
     <div class="username-display">
         <?php
         // Display the username of the logged-in user
@@ -230,6 +242,7 @@ if (isset($_POST['changePasswordBtn'])) {
             <button type="submit" name="changePasswordBtn" class="btn btn-primary">Změnit</button>
         </form>
     </div>
+</div>
 </div>
 
 <script>
