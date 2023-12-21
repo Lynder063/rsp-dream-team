@@ -65,10 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             color: #ffffff;
         }
 
-        .navbar {
-            background-color: #343a40 !important;
-        }
-
         .card {
             background-color: #2c2c2c;
             color: #ffffff;
@@ -88,6 +84,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #383838;
             color: #ffffff;
             border: 1px solid #6c757d;
+        }
+
+        h5{
+            color: #343a40;
         }
     </style>
 
