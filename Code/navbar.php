@@ -46,7 +46,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="profile_editor.php">Upravit profil</a>
-
+                    <a class="dropdown-item" href="createticket.php">HelpDesk</a>
                     <?php if (isset($_SESSION['user_id']) && isset($user_role)) : ?>
                     <?php if ($user_role == 3) : ?>
                     <a class="dropdown-item" href="add_article.php">Přidat nový příspěvek</a>
@@ -60,6 +60,7 @@
                     <a class="dropdown-item" href="#">Správa databáze</a>
                     <a class="dropdown-item" href="#">Správa serveru</a>
                     <a class="dropdown-item" href="#">Správa webu</a>
+                    <a class="dropdown-item" href="mainticketpage.php">Správa ticketů</a>
                     <a class="dropdown-item" href="edit_roles.php">Správa rolí</a>
                     <?php endif; ?>
                     <?php else : ?>
