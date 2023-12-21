@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
 
 // Fetch data for the category dropdown
-$categoryQuery = "SELECT id_kategorie, nazev_kategorie FROM kategorie_clanku";
+$categoryQuery = "SELECT id_kategorie, nazev_kategorie FROM Kategorie_clanku";
 $categoryResult = $conn->query($categoryQuery);
 
 // Fetch data from the Clanek table based on the selected category
