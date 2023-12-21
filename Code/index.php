@@ -65,7 +65,7 @@ $result = $conn->query($sql);
         }
 
     </style>
-    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="icon" href="../Grafika/logo.png" type="image/x-icon">
 </head>
 
 <body>

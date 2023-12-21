@@ -15,7 +15,7 @@
     </script>
 
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light"><a href="index.php"><img src="home.png" height="45px"
+<nav class="navbar navbar-expand-lg navbar-light bg-light"><a href="index.php"><img src="../Grafika/home.png" height="45px"
             width="45px"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,6 +47,7 @@
                     <a class="dropdown-item" href="database_administration.php">Správa databáze</a>
                     <a class="dropdown-item" href="#">Správa serveru</a>
                     <a class="dropdown-item" href="#">Správa webu</a>
+                    <a class="dropdown-item" href="list_articles.php">Správa článků</a>
                     <a class="dropdown-item" href="mainticketpage.php">Správa ticketů</a>
                     <a class="dropdown-item" href="edit_roles.php">Správa rolí</a>
                     <?php endif; ?>
