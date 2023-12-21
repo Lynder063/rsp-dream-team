@@ -163,7 +163,7 @@ if (isset($_POST['changePasswordBtn'])) {
         .pozadi{
             flex: 1;
             background-color: lightgrey;
-            width: 60%;
+            width: 40%;
             margin: 10px auto;
             padding: 20px;
             border-radius: 10px;
