@@ -24,20 +24,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Umělá inteligence</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Hardware</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Software</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Periférie</a>
-            </li>
-        </ul>
+        <ul class="navbar-nav mx-auto"></ul>
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
