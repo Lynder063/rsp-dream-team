@@ -2,11 +2,6 @@
 
 require_once('db.php');
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit;
-}
-
 // Get user ID from URL
 $sql = isset($_GET['id_clanku']) ? intval($_GET['id_clanku']) : 0;
 
