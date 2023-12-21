@@ -65,16 +65,16 @@ $result = $conn->query($sql);
 
 <div class="container">
     <form method="get" class="mb-4">
-        <label for="category">Select Category:</label>
+        <label for="category">Vyberte kategorii:</label>
         <select name="category" id="category" class="form-control">
-            <option value="">All Categories</option>
+            <option value="">Všechny kategorie</option>
             <?php while ($categoryRow = $categoryResult->fetch_assoc()): ?>
                 <option value="<?php echo $categoryRow['id_kategorie']; ?>" <?php echo ($categoryRow['id_kategorie'] == $categoryFilter) ? 'selected' : ''; ?>>
                     <?php echo $categoryRow['nazev_kategorie']; ?>
                 </option>
             <?php endwhile; ?>
         </select>
-        <button type="submit" class="btn btn-primary mt-2">Filter</button>
+        <button type="submit" class="btn btn-primary mt-2">Filtrovat</button>
     </form>
 
     <?php
