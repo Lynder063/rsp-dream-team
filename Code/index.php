@@ -19,9 +19,11 @@ $categoryResult = $conn->query($categoryQuery);
 // Fetch data from the Clanek table based on the selected category
 $categoryFilter = isset($_GET['category']) ? (int)$_GET['category'] : null;
 $sql = "SELECT nazev_clanku, img_url, id_clanku FROM Clanek";
-if ($categoryFilter !== null) {
+
+if ($categoryFilter !== null && $categoryFilter !== 0) {
     $sql .= " WHERE id_kategorie = $categoryFilter";
 }
+
 $result = $conn->query($sql);
 ?>
 
@@ -69,7 +71,7 @@ $result = $conn->query($sql);
             <div class="col-md-2 mb-2">
                 <label for="category">Vyberte kategorii:</label>
                 <select name="category" id="category" class="form-control">
-                    <option value="">Všechny kategorie</option>
+                    <option value="0">Všechny kategorie</option>
                     <?php while ($categoryRow = $categoryResult->fetch_assoc()): ?>
                         <option value="<?php echo $categoryRow['id_kategorie']; ?>" <?php echo ($categoryRow['id_kategorie'] == $categoryFilter) ? 'selected' : ''; ?>>
                             <?php echo $categoryRow['nazev_kategorie']; ?>
