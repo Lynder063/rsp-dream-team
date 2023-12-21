@@ -156,8 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" id="password" name="password" required><br><br>
             <br>
             <input type="submit" value="Přihlásit" class="button">
-            <input type="submit" value="Registrace" class="button">
-
+            <a href="register.php"> <label class="button">Registrace</label></a>
         </form>
     </div>
 </body>
