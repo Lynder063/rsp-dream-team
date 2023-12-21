@@ -1,6 +1,13 @@
 <?php
 
+session_start();
+
 require_once('db.php');
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
 
 $successMessage = '';
 $errorMessage = '';
@@ -43,12 +50,19 @@ $conn->close();
         }
 
         body {
-            background-color: #202124;
-            color: #ffffff;
+            background: linear-gradient(to left, #4d4d4d 0%, #333333 15%, #333333 85%, #4d4d4d 100%);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
         }
 
-        .navbar {
-            background-color: #343a40 !important;
+        .container {
+            flex: 1;
+            background-color: lightgrey;
+            width: 60%;
+            margin: 10px auto;
+            padding: 20px;
+            border-radius: 10px;
         }
 
         .card {
