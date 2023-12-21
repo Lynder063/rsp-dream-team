@@ -37,8 +37,7 @@ $tables = getTables($conn);
     <link rel="stylesheet" href="styles.css">
     <style>
         .main-content-box {
-            width: 400px;
-            text-align: center;
+            width: 80%;
             margin: auto;
         }
 
@@ -47,14 +46,13 @@ $tables = getTables($conn);
         }
 
         .table-list {
-            text-align: left;
             margin-top: 20px;
         }
 
         .pozadi {
             flex: 1;
             background-color: lightgrey;
-            width: 60%;
+            width: 80%;
             margin: 10px auto;
             padding: 20px;
             border-radius: 10px;
@@ -78,43 +76,53 @@ $tables = getTables($conn);
         <h2>Database Administration</h2>
 
         <div class="table-list">
-            <h3>Available Tables:</h3>
-            <div class="btn-group">
-                <?php foreach ($tables as $table): ?>
-                    <button class="btn btn-primary show-entries" data-target="<?php echo $table; ?>"><?php echo $table; ?></button>
-                <?php endforeach; ?>
-            </div>
-        </div>
-
-        <?php foreach ($tables as $table): ?>
-            <div id="<?php echo $table; ?>" class="entry-list">
-                <h3>Entries for <?php echo $table; ?>:</h3>
-                <?php
-                // Fetch entries for each table
-                $entries = array();
-                $result = $conn->query("SELECT * FROM $table");
-                while ($row = $result->fetch_assoc()) {
-                    $entries[] = $row;
-                }
-                ?>
-                <ul>
-                    <?php foreach ($entries as $entry): ?>
-                        <li><?php echo json_encode($entry); ?></li>
+            <?php foreach ($tables as $table): ?>
+                <h3><?php echo $table; ?></h3>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <?php
+                        // Fetch column names for each table
+                        $columns = array();
+                        $result = $conn->query("DESCRIBE $table");
+                        while ($row = $result->fetch_assoc()) {
+                            $columns[] = $row['Field'];
+                        }
+                        foreach ($columns as $column): ?>
+                            <th><?php echo $column; ?></th>
+                        <?php endforeach; ?>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    // Fetch entries for each table
+                    $entries = array();
+                    $result = $conn->query("SELECT * FROM $table");
+                    while ($row = $result->fetch_assoc()) {
+                        $entries[] = $row;
+                    }
+                    foreach ($entries as $entry): ?>
+                        <tr>
+                            <?php foreach ($columns as $column): ?>
+                                <td><?php echo $entry[$column]; ?></td>
+                            <?php endforeach; ?>
+                        </tr>
                     <?php endforeach; ?>
-                </ul>
-            </div>
-        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endforeach; ?>
+        </div>
     </div>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const showEntriesButtons = document.querySelectorAll('.show-entries');
+        const tableHeaders = document.querySelectorAll('.table-list h3');
         const entryLists = document.querySelectorAll('.entry-list');
 
-        showEntriesButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                const targetId = this.dataset.target;
+        tableHeaders.forEach(header => {
+            header.addEventListener('click', function () {
+                const targetId = this.textContent;
                 entryLists.forEach(list => list.classList.remove('active'));
                 document.getElementById(targetId).classList.add('active');
             });
