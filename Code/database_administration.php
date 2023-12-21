@@ -66,6 +66,11 @@ $tables = getTables($conn);
         .entry-list.active {
             display: block;
         }
+
+        .table-container {
+            overflow-x: auto;
+            max-width: 100%;
+        }
     </style>
 </head>
 
@@ -78,38 +83,43 @@ $tables = getTables($conn);
         <div class="table-list">
             <?php foreach ($tables as $table): ?>
                 <h3><?php echo $table; ?></h3>
-                <table class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <?php
-                        // Fetch column names for each table
-                        $columns = array();
-                        $result = $conn->query("DESCRIBE $table");
-                        while ($row = $result->fetch_assoc()) {
-                            $columns[] = $row['Field'];
-                        }
-                        foreach ($columns as $column): ?>
-                            <th><?php echo $column; ?></th>
-                        <?php endforeach; ?>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    // Fetch entries for each table
-                    $entries = array();
-                    $result = $conn->query("SELECT * FROM $table");
-                    while ($row = $result->fetch_assoc()) {
-                        $entries[] = $row;
-                    }
-                    foreach ($entries as $entry): ?>
+                <div class="table-container">
+                    <table class="table table-bordered table-striped">
+                        <thead>
                         <tr>
-                            <?php foreach ($columns as $column): ?>
-                                <td><?php echo $entry[$column]; ?></td>
+                            <?php
+                            // Fetch column names for each table
+                            $columns = array();
+                            $result = $conn->query("DESCRIBE $table");
+                            while ($row = $result->fetch_assoc()) {
+                                if ($table === 'uzivatel' && ($row['Field'] === 'heslo' || $row['Field'] === 'salt')) {
+                                    continue; // Skip 'heslo' and 'salt' columns for 'uzivatel' table
+                                }
+                                $columns[] = $row['Field'];
+                            }
+                            foreach ($columns as $column): ?>
+                                <th><?php echo $column; ?></th>
                             <?php endforeach; ?>
                         </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        <?php
+                        // Fetch entries for each table
+                        $entries = array();
+                        $result = $conn->query("SELECT * FROM $table");
+                        while ($row = $result->fetch_assoc()) {
+                            $entries[] = $row;
+                        }
+                        foreach ($entries as $entry): ?>
+                            <tr>
+                                <?php foreach ($columns as $column): ?>
+                                    <td><?php echo $entry[$column]; ?></td>
+                                <?php endforeach; ?>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             <?php endforeach; ?>
         </div>
     </div>
