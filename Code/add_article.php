@@ -96,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
     body {
         background-color: #202124;
-        color: #ffffff;
+        color: #202124;
     }
 
     .navbar {
@@ -105,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     .card {
         background-color: #2c2c2c;
-        color: #ffffff;
+        color: #202124;;
     }
 
     .btn-primary {
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     .form-control {
         background-color: #383838;
-        color: #ffffff;
+        color: #202124;
         border: 1px solid #6c757d;
     }
     </style>
