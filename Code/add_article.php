@@ -156,17 +156,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="form-group">
                         <label for="title">Nadpis</label>
                         <textarea class="form-control" name="title" id="title" rows="3" minlength="1" maxlength="60"
-                            placeholder="Nadpis"></textarea>
+                                  placeholder="Nadpis"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="abstract">Abstrakt</label>
                         <textarea class="form-control" name="abstract" id="abstract" rows="5" minlength="1"
-                            maxlength="150" placeholder="Abstrakt"></textarea>
+                                  maxlength="150" placeholder="Abstrakt"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="articleText">Text článku</label>
                         <textarea class="form-control" name="articleText" id="articleText" rows="10" minlength="1"
-                            maxlength="5000" placeholder="Text článku"></textarea>
+                                  maxlength="5000" placeholder="Text článku"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="file">Obrázek</label>
@@ -185,7 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="category">Kategorie</label>
                         <select class="form-control" name="category" id="category">
                             <?php
-                            $categoriesSql = "SELECT * FROM `Kategorie clanku`";
+                            $categoriesSql = "SELECT * FROM Kategorie_clanku";
                             $categoriesResult = $conn->query($categoriesSql);
 
                             if ($categoriesResult->num_rows > 0) {
