@@ -2,9 +2,17 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+session_start();
 require_once('db.php');
 
-session_start(); // Start the session
+$user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
+
+// Check if the user is logged in and has an admin role
+if (!isset($_SESSION['user_id']) || $user_role < 3) {
+    // If not, redirect to login or handle unauthorized access
+    header("Location: login.php");
+    exit();
+}
 
 $successMessage = "";
 $errorMessage = "";
@@ -96,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
     body {
         background-color: #202124;
-        color: #ffffff;
+        color: #202124;
     }
 
     .navbar {
@@ -105,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     .card {
         background-color: #2c2c2c;
-        color: #ffffff;
+        color: #202124;;
     }
 
     .btn-primary {
@@ -120,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     .form-control {
         background-color: #383838;
-        color: #ffffff;
+        color: #202124;
         border: 1px solid #6c757d;
     }
     </style>
