@@ -50,6 +50,9 @@ $conn->close();
 
         .container {
             margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .card {
@@ -65,6 +68,9 @@ $conn->close();
         .article-img {
             max-width: 100%;
             height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .form-group label {
