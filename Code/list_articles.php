@@ -7,7 +7,7 @@ require_once('db.php');
 $user_role = isset($_SESSION['role_uzivatele']) ? $_SESSION['role_uzivatele'] : null;
 
 // Check if the user is logged in and has an admin role
-if (!isset($_SESSION['user_id']) || $user_role != 6) {
+if (!isset($_SESSION['user_id']) || $user_role < 4) {
     // If not, redirect to login or handle unauthorized access
     header("Location: login.php");
     exit();
