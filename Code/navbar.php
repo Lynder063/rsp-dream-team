@@ -56,8 +56,6 @@
                         <a class="dropdown-item" href="login.php">Odhlásit</a>
                     <?php elseif ($user_role == 6) : ?>
                         <a class="dropdown-item" href="database_administration.php">Správa databáze</a>
-                        <a class="dropdown-item" href="#">Správa serveru</a>
-                        <a class="dropdown-item" href="#">Správa webu</a>
                         <a class="dropdown-item" href="list_articles.php">Správa článků</a>
                         <a class="dropdown-item" href="mainticketpage.php">Správa ticketů</a>
                         <a class="dropdown-item" href="edit_roles.php">Správa rolí</a>
