@@ -31,32 +31,40 @@
                     aria-haspopup="true" aria-expanded="false">
                     Menu
                 </a>
+                <?php if (isset($_SESSION['user_id']) && isset($user_role)) : ?>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="profile_editor.php">Upravit profil</a>
-                    <a class="dropdown-item" href="createticket.php">HelpDesk</a>
-                    <?php if (isset($_SESSION['user_id']) && isset($user_role)) : ?>
-                    <?php if ($user_role == 3) : ?>
-                    <a class="dropdown-item" href="add_article.php">Přidat nový příspěvek</a>
+                    <?php if ($user_role == 1) : ?>
+                        <a class="dropdown-item" href="login.php">Přihlásit</a>
+                    <?php elseif ($user_role == 2) : ?>
+                        <a class="dropdown-item" href="profile_editor.php">Upravit profil</a>
+                        <a class="dropdown-item" href="createticket.php">HelpDesk</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login.php">Odhlásit</a>
+                    <?php elseif ($user_role == 3) : ?>
+                        <a class="dropdown-item" href="add_article.php">Přidat nový příspěvek</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login.php">Odhlásit</a>
                     <?php elseif ($user_role == 4) : ?>
-                    <a class="dropdown-item" href="list_articles.php">Stav příspěvků</a>
-                    <a class="dropdown-item" href="#">Správa témat</a>
+                        <a class="dropdown-item" href="list_articles.php">Stav příspěvků</a>
+                        <a class="dropdown-item" href="#">Správa témat</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login.php">Odhlásit</a>
                     <?php elseif ($user_role == 5) : ?>
-                    <a class="dropdown-item" href="list_articles.php">Stav příspěvků</a>
-                    <a class="dropdown-item" href="#">Správa recenzí</a>
+                        <a class="dropdown-item" href="list_articles.php">Stav příspěvků</a>
+                        <a class="dropdown-item" href="#">Správa recenzí</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login.php">Odhlásit</a>
                     <?php elseif ($user_role == 6) : ?>
-                    <a class="dropdown-item" href="database_administration.php">Správa databáze</a>
-                    <a class="dropdown-item" href="#">Správa serveru</a>
-                    <a class="dropdown-item" href="#">Správa webu</a>
-                    <a class="dropdown-item" href="list_articles.php">Správa článků</a>
-                    <a class="dropdown-item" href="mainticketpage.php">Správa ticketů</a>
-                    <a class="dropdown-item" href="edit_roles.php">Správa rolí</a>
+                        <a class="dropdown-item" href="database_administration.php">Správa databáze</a>
+                        <a class="dropdown-item" href="#">Správa serveru</a>
+                        <a class="dropdown-item" href="#">Správa webu</a>
+                        <a class="dropdown-item" href="list_articles.php">Správa článků</a>
+                        <a class="dropdown-item" href="mainticketpage.php">Správa ticketů</a>
+                        <a class="dropdown-item" href="edit_roles.php">Správa rolí</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="login.php">Odhlásit</a>
                     <?php endif; ?>
-                    <?php else : ?>
-                    <a class="dropdown-item" href="login.php">Přihlásit</a>
                     <?php endif; ?>
-
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.php">Odhlásit</a>
                 </div>
             </li>
         </ul>
