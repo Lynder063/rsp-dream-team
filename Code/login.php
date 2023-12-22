@@ -6,6 +6,8 @@ require_once('db.php');
 
 session_start(); // Start the session
 
+$error_message = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -33,8 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // TODO FRONTEND: přidat lepší zdělení špatného zadání informací
-    echo "Špatné uživatelské jméno nebo heslo";
+    $error_message = "Špatné uživatelské jméno nebo heslo";
 }
 ?>
 
@@ -57,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         padding: 50px;
         padding-top: 20px;
         width: 250px;
-        height: 450px;
+        height: 470px;
         text-align: center;
         font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
         font-size: 20px;
@@ -140,6 +141,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     img:hover {
         transform: scale(1.5);
     }
+
+    .error-message {
+        color: #ff3333;
+        font-weight: bold;
+    }
 </style>
 
 <body>
@@ -157,6 +163,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <br>
         <input type="submit" value="Přihlásit" class="button">
         <a href="register.php"> <label class="button">Registrace</label></a>
+        <p class="error-message"><?php echo $error_message; ?></p>
+        <br>
     </form>
 </div>
 </body>
