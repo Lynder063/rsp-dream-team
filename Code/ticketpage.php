@@ -34,7 +34,7 @@ $conn->close();
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="mainticketpage.php"><img class="headerrrrr" src="Grafika/home.png" alt=""></a>
+    <a class="navbar-brand" href="mainticketpage.php"><img class="headerrrrr" src="home.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
