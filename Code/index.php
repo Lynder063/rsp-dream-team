@@ -38,15 +38,15 @@ $result = $conn->query($sql);
         .container {
             flex: 1;
             background-color: lightgrey;
-            width: 60%;
             margin: 10px auto;
             padding: 20px;
             border-radius: 10px;
         }
 
         .img_clanek {
-            height: 200px;
-            width: auto;
+            height: auto;
+            width: 100%;
+            word-wrap: break-word;
         }
 
     </style>
@@ -76,6 +76,7 @@ $result = $conn->query($sql);
             echo '<div class="col-md-4 mb-4">';
             echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '">';
             echo '<img class="rounded img_clanek" src="' . $imgUrl . '">';
+            //echo '<img class="rounded img-fluid img_clanek" src="Test.jpg">';
             echo '</a>';
             echo '<div class="text-center">';
             echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '" class="nadpis_clanek">' . $nazevClanku . '</a>';
