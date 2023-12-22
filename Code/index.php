@@ -117,8 +117,15 @@ $result = $conn->query($sql);
                 $count++;
             }
         } else {
-            echo '<p>No articles found.</p>';
+            echo '<div class="row">';
+            echo '<div class="col-md-12 text-center mt-5 offset-md-4 offset-lg-10">';
+            echo '<h3 class="text-muted">Nebyly nalezeny žádné články</h3>';
+            echo '<p class="text-muted">Vraťte se později pro další zajímavé články!</p>';
+            echo '</div>';
+            echo '</div>';
         }
+
+
         ?>
     </div>
 </div>

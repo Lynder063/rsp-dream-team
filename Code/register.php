@@ -120,6 +120,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
         width: 80%;
     }
 
+    .seconary{
+        font-size: 12px;
+        width: 50%;
+    }
+
     .button:hover,
     .button:focus {
         opacity: .75;
@@ -175,6 +180,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
 
             <br><br>
             <input type="submit" value="Registrovat" class="button" name="submit">
+            <br><br>
+            <a href="login.php"> <label class="button seconary">Přihlásit</label></a>
         </form>
     </div>
 </body>
