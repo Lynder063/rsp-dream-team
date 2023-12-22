@@ -75,7 +75,7 @@ $result = $conn->query($sql);
             // Output the HTML for each record
             echo '<div class="col-md-4 mb-4">';
             echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '">';
-            echo '<img class="rounded img_clanek" src="' . $imgUrl . '">';
+            echo '<img class="rounded img-fluid img_clanek" src="' . $imgUrl . '">';
             //echo '<img class="rounded img-fluid img_clanek" src="Test.jpg">';
             echo '</a>';
             echo '<div class="text-center">';
