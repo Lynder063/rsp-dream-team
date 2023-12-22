@@ -61,9 +61,9 @@ $result = $conn->query($sql);
 
         .img_clanek {
             height: 200px;
-            width: auto;
+            width: 100%;
+            object-fit: cover; /* Ensure images maintain aspect ratio */
         }
-
     </style>
     <link rel="icon" href="Grafika/logo.png" type="image/x-icon">
 </head>
@@ -91,39 +91,36 @@ $result = $conn->query($sql);
         </div>
     </form>
 
-    <?php
-    $count = 0;
+    <div class="row">
+        <?php
+        $count = 0;
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            if ($count % 3 == 0) {
-                if ($count > 0) {
-                    echo '</div>';
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                if ($count % 3 == 0 && $count > 0) {
+                    echo '</div><div class="row">';
                 }
-                echo '<div class="row">';
+
+                $nazevClanku = $row['nazev_clanku'];
+                $imgUrl = $row['img_url'];
+
+                // Output the HTML for each record
+                echo '<div class="col-md-4 mb-4">';
+                echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '">';
+                echo '<img class="rounded img_clanek" src="' . $imgUrl . '">';
+                echo '</a>';
+                echo '<div class="text-center">';
+                echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '" class="nadpis_clanek">' . $nazevClanku . '</a>';
+                echo '</div>';
+                echo '</div>';
+
+                $count++;
             }
-
-            $nazevClanku = $row['nazev_clanku'];
-            $imgUrl = $row['img_url'];
-
-            // Output the HTML for each record
-            echo '<div class="col-md-4 mb-4">';
-            echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '">';
-            echo '<img class="rounded img_clanek" src="' . $imgUrl . '">';
-            echo '</a>';
-            echo '<div class="text-center">';
-            echo '<a href="articlepage.php?id_clanku=' . $row['id_clanku'] . '" class="nadpis_clanek">' . $nazevClanku . '</a>';
-            echo '</div>';
-            echo '</div>';
-
-            $count++;
+        } else {
+            echo '<p>No articles found.</p>';
         }
-
-        echo '</div>';
-    } else {
-        echo '<p>No articles found.</p>';
-    }
-    ?>
+        ?>
+    </div>
 </div>
 </body>
 
