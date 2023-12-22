@@ -8,6 +8,9 @@ session_start(); // Start the session
 
 $error_message = "";
 
+$user_role = 1;
+$_SESSION['role_uzivatele'] = $user_role;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
