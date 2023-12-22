@@ -143,22 +143,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </style>
 
 <body>
-    <a href="index.php"><img src="home.png" alt=""></a>
+<a href="index.php"><img src="home.png" alt=""></a>
 
-    <div class="form">
-        <form method="post">
-            <h1 class="login">Přihlášení</h1>
-            <br>
-            <label for="username">Uživatelské jméno</label>
-            <input type="text" id="username" name="username" required><br><br>
+<div class="form">
+    <form method="post">
+        <h1 class="login">Přihlášení</h1>
+        <br>
+        <label for="username">Uživatelské jméno</label>
+        <input type="text" id="username" name="username" required><br><br>
 
-            <label for="password">Heslo</label>
-            <input type="password" id="password" name="password" required><br><br>
-            <br>
-            <input type="submit" value="Přihlásit" class="button">
-            <a href="register.php"> <label class="button">Registrace</label></a>
-        </form>
-    </div>
+        <label for="password">Heslo</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <br>
+        <input type="submit" value="Přihlásit" class="button">
+        <a href="register.php"> <label class="button">Registrace</label></a>
+    </form>
+</div>
 </body>
 
 </html>
