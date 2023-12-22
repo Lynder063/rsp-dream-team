@@ -118,6 +118,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         margin-top: 13px ;
     }
 
+    .seconary{
+        font-size: 12px;
+        width: 50%;
+    }
+
     .button:hover,
     .button:focus {
         opacity: .75;
@@ -162,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="password" id="password" name="password" required><br><br>
         <br>
         <input type="submit" value="Přihlásit" class="button">
-        <a href="register.php"> <label class="button">Registrace</label></a>
+        <a href="register.php"> <label class="button seconary">Registrace</label></a>
         <p class="error-message"><?php echo $error_message; ?></p>
         <br>
     </form>
